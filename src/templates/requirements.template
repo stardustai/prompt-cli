@@ -1,0 +1,10 @@
+# Cloud Storage
+oss2
+
+# Environment Management
+python-dotenv
+
+# Data Processing
+PyYAML
+numpy
+scipy

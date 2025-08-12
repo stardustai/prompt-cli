@@ -1,0 +1,11 @@
+{
+    "attachmentType": "IMAGE_SEQUENCE",
+    "attachment": [
+        "https://example.com/path/to/image1.jpg",
+        "https://example.com/path/to/image2.jpg",
+        "https://example.com/path/to/image3.jpg"
+    ],
+    "metadata": {
+        "uniqueIdentifier": "uuid"
+    }
+}
