@@ -1,6 +1,6 @@
 {
   "name": "@stardustai/prompt-cli",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A TypeScript-based command line tool",
   "main": "dist/index.js",
   "bin": {

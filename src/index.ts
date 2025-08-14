@@ -5,6 +5,7 @@ import { initProject } from './commands/init';
 import { generateCommand } from './commands/generate';
 import { configClearCommand } from './commands/config';
 import { checkUpdateCommand, autoCheckUpdate } from './commands/update';
+import { packageInfo } from './utils/packageInfo';
 
 const program = new Command();
 
@@ -16,7 +17,7 @@ autoCheckUpdate().catch(() => {
 program
   .name('prompt')
   .description('A TypeScript-based command line tool')
-  .version('1.0.0');
+  .version(packageInfo.version, '-v, --version', 'output the version number');
 
 // init 命令
 program
