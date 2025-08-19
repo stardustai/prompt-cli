@@ -58,14 +58,13 @@ async function initializeGit(targetDir: string) {
 
   try {
     console.log(chalk.blue('📁 初始化 Git 仓库...'));
+    const absoluteTargetDir = path.resolve(targetDir);
     execSync('git init', {
-      cwd: targetDir,
+      cwd: absoluteTargetDir,
       stdio: 'pipe',
       windowsHide: true
     });
-    console.log(chalk.green('✅ Git 仓库初始化完成'));
-
-    // 创建 .gitignore 文件（如果不存在）
+    console.log(chalk.green('✅ Git 仓库初始化完成'));    // 创建 .gitignore 文件（如果不存在）
     const gitignorePath = path.join(targetDir, '.gitignore');
     if (!(await fs.pathExists(gitignorePath))) {
       const gitignoreContent = await readTemplate('gitignore.template');
@@ -93,8 +92,9 @@ async function initializePythonVenv(targetDir: string) {
     const pythonCommand = await findCompatiblePython();
 
     // 创建虚拟环境
+    const absoluteTargetDir = path.resolve(targetDir);
     execSync(`${pythonCommand} -m venv .venv`, {
-      cwd: targetDir,
+      cwd: absoluteTargetDir,
       stdio: 'inherit',
       windowsHide: true
     });
@@ -165,7 +165,7 @@ async function installPythonDependencies(targetDir: string) {
     }
 
     // 升级 pip（静默执行）
-    const pipCommand = isWindows ? `"${absolutePipPath}"` : absolutePipPath;
+    const pipCommand = isWindows ? `"${absolutePipPath}"` : `"${absolutePipPath}"`;
 
     execSync(`${pipCommand} install --upgrade pip`, {
       cwd: absoluteTargetDir,
@@ -178,14 +178,12 @@ async function installPythonDependencies(targetDir: string) {
       cwd: absoluteTargetDir,
       stdio: 'inherit',
       windowsHide: true
-    });
-
-    console.log(chalk.green('✅ Python 依赖安装完成'));
+    });    console.log(chalk.green('✅ Python 依赖安装完成'));
     console.log(chalk.cyan('💡 激活虚拟环境:'));
     if (isWindows) {
-      console.log(chalk.cyan(`   ${absoluteTargetDir}\\.venv\\Scripts\\activate`));
+      console.log(chalk.cyan(`   "${absoluteTargetDir}\\.venv\\Scripts\\activate"`));
     } else {
-      console.log(chalk.cyan(`   source ${absoluteTargetDir}/.venv/bin/activate`));
+      console.log(chalk.cyan(`   source "${absoluteTargetDir}/.venv/bin/activate"`));
     }
   } catch (error) {
     console.error(chalk.red('详细错误信息:'), error);
