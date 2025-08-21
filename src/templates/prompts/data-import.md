@@ -16,11 +16,7 @@
 
 ## 任务步骤
 
-1. 创建并执行 `scripts/fetch_config.py`，获取各类配置文件并保存到 data 目录下，不需要获取资源类文件
-2. 创建并执行 `scripts/parse_config.py`，分析各类配置文件内容，思考其常见含义，确认解析方式
-3. 创建并执行 `scripts/validate_config.py`，结合已有信息验证参数完整性及正确性
-4. 创建并执行 `scripts/import_data.py`，获取远程完整文件列表，生成目标格式文件，需考虑大批量文件处理优化
-5. 创建 `scripts/main.py`，完整执行整个流程
+1. 创建并执行 `scripts/import_data.py`，获取远程完整文件列表，生成目标格式文件，需考虑大批量文件处理优化
 
 {{#isPointCloud}}
 ## 关键技术处理点
